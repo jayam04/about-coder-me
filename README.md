@@ -5,3 +5,4 @@ API to access your leetcode rankings.
 ## Usage
 
 Make `GET` request at `https://about-coderme.vercel.app/{username}/leetcode/contest/` for your contest (leetcode) related data.  
+For more see [URL Formatting](url-format.md)  
