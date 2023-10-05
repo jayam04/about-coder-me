@@ -1,0 +1,9 @@
+{
+    "functions": {
+      "main.py": {
+        "runtime": "python3.8",
+        "buildCommand": "pip install -r requirements.txt -t . && vercel --prod"
+      }
+    }
+  }
+  
