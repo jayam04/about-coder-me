@@ -1,9 +1,12 @@
 {
-    "functions": {
-      "main.py": {
-        "runtime": "python3.8",
-        "buildCommand": "pip install -r requirements.txt -t . && vercel --prod"
-      }
+    "version": 2,
+    "builds": [
+      { "src": "main.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/main.py" }
+    ],
+    "env": {
+      "APP_MODULE": "main:app"
     }
   }
-  
