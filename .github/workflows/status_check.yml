@@ -30,5 +30,6 @@ jobs:
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git remote add origin_with_token "https://jayam04:${{ secrets.STATUS_UPDATE_PAT }}@github.com/${{ github.repository }}"
-        git push origin_with_token
+        git add api_status.json
+        git commit -m "Update API status [skip ci]"
+        git push
