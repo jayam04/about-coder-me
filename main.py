@@ -1,3 +1,5 @@
+import json
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -49,3 +51,7 @@ def get_leetcode_info(username: str):
     return {
         "rating": contest.get_contest_basic(username)["data"]["userContestRanking"]["rating"]
     }
+
+@app.get("/status")
+def get_status():
+    return json.load(open("status.json", "r"))

@@ -44,6 +44,6 @@ status_data = {
     "base_url": base_url
 }
 
-# Write the status data to api_status.json
-with open("api_status.json", "w") as json_file:
+# Write the status data to status.json
+with open("status.json", "w") as json_file:
     json.dump(status_data, json_file, indent=2)
