@@ -2,8 +2,8 @@
 
 API to access your leetcode rankings.  
 
-![leetcode](https://img.shields.io/badge/leetcode-success%20rate:%20100-brightgreen)  
-![codeforces](https://img.shields.io/badge/codeforces-success%20rate:%20100-brightgreen)  
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fleetcode%2Fjayampatel&query=%24.rating&style=flat-square&label=leetcode)  
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fcodeforces%2Fjayampatel&query=%24.rating&style=flat-square&label=codeforces)  
 
 ## Usage
 
