@@ -1,16 +1,16 @@
 {
-  "timestamp": 1698553873,
+  "timestamp": 1698626904,
   "data": {
     "leetcode": [
       {
         "testcase": "jayampatel",
-        "status": "failure",
-        "status_code": 500
+        "status": "success",
+        "status_code": 200
       },
       {
         "testcase": "hasan_15_07_03",
-        "status": "failure",
-        "status_code": 500
+        "status": "success",
+        "status_code": 200
       }
     ],
     "codeforces": [
