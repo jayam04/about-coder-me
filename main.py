@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-import codeforces
+import platform_scripts.codeforces as codeforces
 from leetcode import contest
 
 app = FastAPI()
@@ -20,7 +20,8 @@ app.add_middleware(
 @DeprecationWarning
 @app.get("/{username}/leetcode/contest")
 def get_leetcode_info(username: str):
-    return contest.get_contest_data(username)
+    if username[0] != '@':
+        return contest.get_contest_data(username)
 
 @DeprecationWarning
 @app.get("/{username}/leetcode/contest/basic")
