@@ -17,7 +17,7 @@ It's not required but you can use it if you need multiple-platform requests (ex.
 ### Steps
 
 1. Create `fork`.
-2. Add your username in `usernames.json` in format below:
+2. Add your username in `users.json` in format below:
     ```json
     {
     "USERNAME_YOU_NEED*": {

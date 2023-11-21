@@ -56,3 +56,21 @@ def get_leetcode_info(username: str):
 @app.get("/status")
 def get_status():
     return json.load(open("status.json", "r"))
+
+@app.get("/{username}")
+def get_all_ratings_from_username(username: str):
+    with open('users.json') as file:
+        users: dict = json.load(file)
+        if username in users.keys():
+            userdata = users[username]
+        else:
+            return {"error": "username not found!",
+                    "code": 1001}
+
+    body = {}
+    if "leetcode" in userdata.keys():
+        body['leetcode'] = get_leetcode_info(userdata['leetcode'])  # TODO: use better functions
+    if "codeforces" in userdata.keys():
+        body['codeforces'] = get_codeforces_info(userdata['codeforces'])  # TODO: use better functions
+
+    return body
