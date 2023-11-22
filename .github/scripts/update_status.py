@@ -6,7 +6,8 @@ import re
 base_url = "https://about-coderme.vercel.app/"
 websites = {
     "leetcode": ["jayampatel", "hasan_15_07_03"],
-    "codeforces": ["jayampatel"]
+    "codeforces": ["jayampatel"],
+    "codechef": ["jayampatel", "jympatel"]
 }
 status_data = {}
 
@@ -24,17 +25,17 @@ for website in websites:
             "status_code": response.status_code,
         })
 
-    # Update the status badge in the README.md file
-    with open("README.md", "r") as readme_file:
-        readme_content = readme_file.read()
-
-    avg_success = sum(1 for status in status_data[website] if status["status"] == "success") / len(status_data[website])
-    status = "UP"  if avg_success >= 0.5 else "DOWN"
-    color = "brightgreen" if avg_success > 0.7 else "red"
-    readme_content = re.sub(r"!\[" + website + r"\]\(.*\)", f"![{website}](https://img.shields.io/badge/{website}-success%20rate:%20{int(avg_success * 100)}-{color})", readme_content)
-
-    with open("README.md", "w") as readme_file:
-        readme_file.write(readme_content)
+    # # Update the status badge in the README.md file
+    # with open("README.md", "r") as readme_file:
+    #     readme_content = readme_file.read()
+    #
+    # avg_success = sum(1 for status in status_data[website] if status["status"] == "success") / len(status_data[website])
+    # status = "UP"  if avg_success >= 0.5 else "DOWN"
+    # color = "brightgreen" if avg_success > 0.7 else "red"
+    # readme_content = re.sub(r"!\[" + website + r"\]\(.*\)", f"![{website}](https://img.shields.io/badge/{website}-success%20rate:%20{int(avg_success * 100)}-{color})", readme_content)
+    #
+    # with open("README.md", "w") as readme_file:
+    #     readme_file.write(readme_content)
 
 
 # Create the status data
