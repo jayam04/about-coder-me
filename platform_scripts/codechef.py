@@ -12,4 +12,9 @@ def get_contest_rating(username: str) -> int:
 
 
 def get_contest_data(username: str, queries: list = None):
+    # TODO: if queries is none
+    # TODO: tmp implementation it's not good as each function will scrape web all different times
+    return {
+        "rating": get_contest_rating(username)
+    }
     pass
