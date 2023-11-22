@@ -39,6 +39,7 @@ def generate_query(pars_required: list):
 
 def get_contest_data(username: str, queries: list = None):
     # TODO: tmp code to remove leetcode/contest.py
+    data['variables']['username'] = username
     response = requests.post('https://leetcode.com/graphql/', json=data)
     if response.ok:
         response = response.json()
