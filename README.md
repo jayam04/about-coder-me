@@ -1,33 +1,37 @@
-# about-coderme
+# About Coder Me 💻
 
-API to access your leetcode rankings.  
+## Overview 📘
 
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fleetcode%2Fjayampatel&query=%24.rating&style=flat-square&label=leetcode)  
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fcodeforces%2Fjayampatel&query=%24.rating&style=flat-square&label=codeforces)  
+API to access your competitive programming profiles and rankings across platforms like LeetCode and Codeforces.  
 
-## Usage
+![LeetCode Rating](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fleetcode%2Fjayampatel&query=%24.rating&style=flat-square&label=LeetCode)  
+![Codeforces Rating](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fcodeforces%2Fjayampatel&query=%24.rating&style=flat-square&label=Codeforces)  
 
-Make `GET` request at `https://about-coderme.vercel.app/{website}/{username}/` for all data for that website  
-For more see [URL Formatting](docs/endpoints.md)  
+## Usage 📱
 
-## Claim Your Username!!
+Make a `GET` request to `https://about-coderme.vercel.app/{website}/{username}/` to retrieve data for a particular website.  
 
-It's not required but you can use it if you need multiple-platform requests (ex. leetcode + codeforces).  
+See [API Endpoints Doc](docs/endpoints.md) 📃 for more details on API endpoints.
 
-### Steps
+## Claim Your Username!! 🎉 
 
-1. Create `fork`.
-2. Add your username in `users.json` in format below:
+You can claim a consistent username across platforms:
+
+1. Fork this repo 🍴  
+2. Add your details to `users.json`:
+
     ```json
     {
-    "USERNAME_YOU_NEED*": {
-        "github": "YOUR_GITHUB_USERNAME*",
-         "leetcode": "YOUR_LEETCODE_USERNAME",
-         "codeforces": "YOUR_CODEFORCES_USERNAME"
-   }
-   }
-   ```
-   constraints:
-   1. USERNAME_YOU_NEED (REQUIRED): username you need for your acm profile, must not be taken.  
-   2. YOUR_GITHUB_USERNAME (REQUIRED): must match your current GitHub username for PR to be merged.
-   3. others: optional
+      "YOUR_CHOSEN_USERNAME": {  
+        "github": "YOUR_GH_USERNAME",
+        "leetcode": "YOUR_LEETCODE_USERNAME",
+        "codeforces": "YOUR_CF_USERNAME" 
+      }
+    }
+    ```
+
+Constraints: 🚧
+
+- `YOUR_CHOSEN_USERNAME`: Username you want to claim  
+- `YOUR_GH_USERNAME`: Must match your GitHub username
+- Others are optional, which are `codechef`, `codeforces` and `leetcode`
