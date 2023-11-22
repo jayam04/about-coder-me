@@ -1,14 +1,48 @@
-# URL Format
+# Endpoints
 
-## Intro
+## 1. Using Endpoints
+There are two main ways to access the data:  
 
-Current to access API, base url will be `https://about-coderme.vercel.app/{username}/` where username will be your username for specific site.  
-Above URL will have all data from `/{username}/*`, where * is used for platform like leetcode (only one currently supported).  
-There is issue of users having different usernames across different platforms and we will try to find good solution to it.  
+### I. Using Claimed Username
+`coderme.vercel.app/{claimed_username}`  
 
-## Leetcode
+This uses the claimed username added to `users.json`.  
+Can be used to get data for all platforms:
+```
+GET /{claimed_username}/
+```
 
-For leetcode you can use `/{username}/leetcode` to get all profile data of leetcode.
+Or get platform specific data: 
+```  
+GET /{claimed_username}/{platform}
+```
 
-Currently additional URLs are `{uname}/leetcode/contest` giving data only about content (with contest history).  
-and other `{uname}/leetcode/contest/basic` for contest data (without contest history).  
+Works like a REST API - can append various paths to filter data.
+
+### II. Using Platform Specific Username
+`coderme.vercel.app/{platform}/{actual_username}`
+
+This uses the actual username for a specific platform.
+
+Can be used to get all data for that platform:
+```
+GET /{platform}/{actual_username} 
+```
+
+Can also apply queries to get partial data:
+```
+GET /{platform}/{actual_username}?query=query1+query2
+```
+
+
+## 2. Supported Platforms And Their Queries
+
+|              | **leetcode** | **codeforces** | **codechef** |
+|-------------:|:------------:|:--------------:|:------------:|
+|  **website** | leetcode.com | codeforces.com | codechef.com |
+|  **ratings** |    [yes]     |     [yes]      |    [yes]     |
+| **contests** |    [yes]     |      [no]      |     [no]     |
+
+
+[yes]: ✅  
+[no]: ⭕  
