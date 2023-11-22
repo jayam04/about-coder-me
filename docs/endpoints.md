@@ -40,9 +40,6 @@ GET /{platform}/{actual_username}?query=query1+query2
 |              | **leetcode** | **codeforces** | **codechef** |
 |-------------:|:------------:|:--------------:|:------------:|
 |  **website** | leetcode.com | codeforces.com | codechef.com |
-|  **ratings** |    [yes]     |     [yes]      |    [yes]     |
-| **contests** |    [yes]     |      [no]      |     [no]     |
+|  **ratings** |      ✅       |       ✅        |      ✅       |
+| **contests** |      ✅       |       ⭕        |      ⭕       |
 
-
-[yes]: ✅  
-[no]: ⭕  
