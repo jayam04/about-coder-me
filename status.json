@@ -1,5 +1,5 @@
 {
-  "timestamp": 1700700632,
+  "timestamp": 1700786960,
   "data": {
     "leetcode": [
       {
@@ -16,8 +16,8 @@
     "codeforces": [
       {
         "testcase": "jayampatel",
-        "status": "failure",
-        "status_code": 500
+        "status": "success",
+        "status_code": 200
       }
     ],
     "codechef": [
