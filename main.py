@@ -86,7 +86,7 @@ def get_all_ratings_from_username(username: str):
     if "codeforces" in userdata.keys():
         body['codeforces'] = get_codeforces_info(userdata['codeforces'])  # TODO: use better functions
     if "codechef" in userdata.keys():
-        body['codechef'] = chef.get_contest_rating(userdata['codeforces'])  # TODO: function is ok but not complete
+        body['codechef'] = chef.get_contest_data(userdata['codeforces'])  # TODO: function is ok but not complete
 
     return body
 
