@@ -6,6 +6,7 @@ API to access your competitive programming profiles and rankings across platform
 
 ![LeetCode Rating](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fleetcode%2Fjayampatel&query=%24.rating&style=flat-square&label=LeetCode)  
 ![Codeforces Rating](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabout-coderme.vercel.app%2Fcodeforces%2Fjayampatel&query=%24.rating&style=flat-square&label=Codeforces)  
+![Codechef Rating](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcoderme.vercel.app%2Fcodechef%2Fjayampatel&query=%24.rating&style=flat-square&label=Codechef)  
 
 ## Usage 📱
 
@@ -34,4 +35,4 @@ Constraints: 🚧
 
 - `YOUR_CHOSEN_USERNAME`: Username you want to claim  
 - `YOUR_GH_USERNAME`: Must match your GitHub username
-- Others are optional, which are `codechef`, `codeforces` and `leetcode`
+- Others are optional, which are `codechef`, `codeforces`, `leetcode`, `linkedin` and `website`. For website provide full including http protocol url ex. `https://jayampatel.vercel.app`
