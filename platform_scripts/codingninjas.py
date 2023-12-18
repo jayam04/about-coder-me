@@ -15,5 +15,5 @@ def get_contest_data(username: str, queries: list = None):
     # TODO: tmp implementation it's not good as each function will scrape web all different times
     user_rating_data = get_user_rating_data(coding_ninjas_uuid)  # TODO: remove if not required ie, based on query
     return {
-        "rating": round(user_rating_data['current_user_rating'])
+        "rating": int(user_rating_data['current_user_rating'])
     }
