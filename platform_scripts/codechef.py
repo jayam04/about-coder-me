@@ -17,4 +17,3 @@ def get_contest_data(username: str, queries: list = None):
     return {
         "rating": get_contest_rating(username)
     }
-    pass

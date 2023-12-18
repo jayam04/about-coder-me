@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import platform_scripts.codeforces as cf
 import platform_scripts.codechef as chef
 import platform_scripts.leetcode as lt
+import platform_scripts.codingninjas as ninja
 from leetcode import contest
 
 app = FastAPI()
@@ -65,6 +66,11 @@ def get_codechef_info(username: str):
     return chef.get_contest_data(username)
 
 
+@app.get("/codingninjas/{username}")
+def get_codingninjas_info(username: str):
+    return ninja.get_contest_data(username)
+
+
 @app.get("/status")
 def get_status():
     return json.load(open("status.json", "r"))
@@ -87,6 +93,8 @@ def get_all_ratings_from_username(username: str):
         body['codeforces'] = get_codeforces_info(userdata['codeforces'])  # TODO: use better functions
     if "codechef" in userdata.keys():
         body['codechef'] = chef.get_contest_data(userdata['codeforces'])  # TODO: function is ok but not complete
+    if "codingninjas" in userdata.keys():
+        body["codingninjas"] = ninja.get_contest_data(userdata['codingninjas'])  # TODO: better functions
 
     return body
 
