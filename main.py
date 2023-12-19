@@ -1,4 +1,6 @@
 import json
+import concurrent.futures
+
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -85,16 +87,28 @@ def get_all_ratings_from_username(username: str):
         else:
             return {"error": "username not found!",
                     "code": 1100}
-
+        
     body = {}
-    if "leetcode" in userdata.keys():
-        body['leetcode'] = get_leetcode_info(userdata['leetcode'])  # TODO: use better functions
+    sub_exec = {}
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        # TODO: for loop instead if statements
+        if "leetcode" in userdata.keys():
+            sub_exec['leetcode'] = executor.submit(lt.get_contest_data, userdata['leetcode'])
+        if "codeforces" in userdata.keys():
+            sub_exec['codeforces'] = executor.submit(cf.get_contest_data, userdata['codeforces'])
+        if "codechef" in userdata.keys():
+            sub_exec['codechef'] = executor.submit(chef.get_contest_data, userdata['codeforces'])
+        if "codingninjas" in userdata.keys():
+            sub_exec['codingninjas'] = executor.submit(ninja.get_contest_data, userdata['codingninjas'])
+    concurrent.futures.wait(sub_exec.values())
+    if "leetcode" in sub_exec.keys():
+        body['leetcode'] = sub_exec['leetcode'].result()  # TODO: use better functions
     if "codeforces" in userdata.keys():
-        body['codeforces'] = get_codeforces_info(userdata['codeforces'])  # TODO: use better functions
+        body['codeforces'] = sub_exec["codeforces"].result()  # TODO: use better functions
     if "codechef" in userdata.keys():
-        body['codechef'] = chef.get_contest_data(userdata['codeforces'])  # TODO: function is ok but not complete
+        body['codechef'] = sub_exec["codechef"].result()  # TODO: function is ok but not complete
     if "codingninjas" in userdata.keys():
-        body["codingninjas"] = ninja.get_contest_data(userdata['codingninjas'])  # TODO: better functions
+        body["codingninjas"] = sub_exec["codingninjas"].result()  # TODO: better functions
 
     return body
 
