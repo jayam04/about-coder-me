@@ -1,14 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/main.rs",
-      "use": "vercel",
-      "config": { 
-        "rust": {
-          "version": "1.65.0"
-        }  
-      }
-    }
+  "builds": [{ "src": "src/main.rs", "use": "vercel", "config": {
+    "rust": {
+      "version": "1.65.0"
+    } 
+  }}],
+  "routes": [
+    { "src": "/(.*)", "dest": "/src/main.rs" }
   ]
 }
