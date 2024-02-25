@@ -3,8 +3,12 @@
   "builds": [
     {
       "src": "src/main.rs",
-      "use": "@vercel/rust",
-      "config": { "rustup": true }
+      "use": "vercel",
+      "config": { 
+        "rust": {
+          "version": "1.65.0"
+        }  
+      }
     }
-  ] 
+  ]
 }
