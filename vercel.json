@@ -1,4 +1,10 @@
 {
-    "version": 2,
-    "buildCommand": "cargo run"
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/main.rs",
+      "use": "@vercel/rust",
+      "config": { "rustup": true }
+    }
+  ] 
+}
