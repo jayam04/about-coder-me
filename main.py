@@ -1,9 +1,9 @@
 import json
 import concurrent.futures
 
-
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
 
 import platform_scripts.codeforces as cf
 import platform_scripts.codechef as chef
@@ -22,35 +22,15 @@ app.add_middleware(
     allow_headers=["*"],  # Set this to the HTTP headers you want to allow
 )
 
+class NoCacheMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        response: Response = await call_next(request)
+        cached = request.query_params.get('cached')
+        if cached == 'false':  # TODO: add authentication for non-cached methods.
+            response.headers['Cache-Control'] = 'no-store'
+        return response
 
-@DeprecationWarning
-@app.get("/{username}/leetcode/contest")
-def get_leetcode_info(username: str):
-    if username[0] != '@':
-        return contest.get_contest_data(username)
-
-
-@DeprecationWarning
-@app.get("/{username}/leetcode/contest/basic")
-def get_leetcode_info(username: str):
-    data = contest.get_contest_basic(username)
-    data['warning'] = {"endpoint to be depreciated by end of 2023"}
-    return data
-
-
-@DeprecationWarning
-@app.get("/{username}/leetcode/contest/basic/rank")
-def get_leetcode_rank(username: str):
-    pass
-    return contest.get_contest_rank(username)
-
-
-@DeprecationWarning
-@app.get("/{username}/leetcode/{query}")
-def get_leetcode_info_based_on_query(username: str, query: str):
-    query = query.split("+")
-    pass
-    return contest.get_leetcode_info(username, query)
+app.add_middleware(NoCacheMiddleware)
 
 
 @app.get("/codeforces/{username}")
@@ -73,11 +53,6 @@ def get_codingninjas_info(username: str):
     return ninja.get_contest_data(username)
 
 
-@app.get("/status")
-def get_status():
-    return json.load(open("status.json", "r"))
-
-
 @app.get("/{username}")
 def get_all_ratings_from_username(username: str):
     with open('users.json') as file:
@@ -87,7 +62,7 @@ def get_all_ratings_from_username(username: str):
         else:
             return {"error": "username not found!",
                     "code": 1100}
-        
+
     body = {}
     sub_exec = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -113,8 +88,9 @@ def get_all_ratings_from_username(username: str):
     return body
 
 
+@DeprecationWarning
 @app.get("/{username}/leetcode")
-def get_leetcode_rating(username: str):
+def get_leetcode_rating(username: str, cached: bool = True):
     if username[0] == "@":
         with open('users.json') as file:
             users: dict = json.load(file)
