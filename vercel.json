@@ -9,21 +9,13 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/main.py"
+      "dest": "/main.py",
+      "headers": {
+        "Cache-Control": "s-maxage=259200"
+      }
     }
   ],
   "env": {
     "APP_MODULE": "main:app"
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=259200"
-        }
-      ]
-    }
-  ]
+  }
 }
